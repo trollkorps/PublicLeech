@@ -18,7 +18,7 @@ from tobrot import (
 )
 
 
-async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user_working_dir, yt_dl_proxy):
+async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user_working_dir):
     command_to_exec = [
         "youtube-dl",
         "--no-warnings",
