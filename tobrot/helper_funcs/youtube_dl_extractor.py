@@ -18,7 +18,7 @@ from tobrot import (
 )
 
 
-async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user_working_dir):
+async def extract_youtube_dl_formats(url, yt_dl_proxy, yt_dl_user_name, yt_dl_pass_word, user_working_dir):
     command_to_exec = [
         "youtube-dl",
         "--no-warnings",
@@ -30,9 +30,9 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
     #
-    #if yt_dl_proxy is not None:
-        #command_to_exec.append("--proxy")
-        #command_to_exec.append(yt_dl_proxy)
+    if yt_dl_proxy is not None:
+        command_to_exec.append("--proxy")
+        command_to_exec.append(yt_dl_proxy)
     if yt_dl_user_name is not None:
         command_to_exec.append("--username")
         command_to_exec.append(yt_dl_user_name)
