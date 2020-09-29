@@ -93,7 +93,7 @@ async def ytdl_btn_k(message: Message):
     i_m_sefg = await message.edit_text("processing")
     # LOGGER.info(message)
     # extract link from message
-    dl_url, cf_name, yt_dl_user_name, yt_dl_pass_word = await extract_link(
+    dl_url, cf_name, yt_dl_proxy, yt_dl_user_name, yt_dl_pass_word = await extract_link(
         message.reply_to_message, "YTDL"
     )
     LOGGER.info(dl_url)
