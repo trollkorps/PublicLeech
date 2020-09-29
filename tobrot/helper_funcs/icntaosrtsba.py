@@ -114,6 +114,7 @@ async def ytdl_btn_k(message: Message):
         thumb_image, text_message, reply_markup = await extract_youtube_dl_formats(
             dl_url,
             # cf_name,
+            yt_dl_proxy,
             yt_dl_user_name,
             yt_dl_pass_word,
             user_working_dir
