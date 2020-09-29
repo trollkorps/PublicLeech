@@ -36,8 +36,10 @@ def extract_url_from_entity(entities: MessageEntity, text: str):
 async def extract_link(message, type_o_request):
     custom_file_name = None
     url = None
+    url = None
     youtube_dl_username = None
     youtube_dl_password = None
+    youtube_dl_proxy = None
 
     if message is None:
         url = None
@@ -52,11 +54,12 @@ async def extract_link(message, type_o_request):
             if len(url_parts) == 2:
                 url = url_parts[0]
                 custom_file_name = url_parts[1]
-            elif len(url_parts) == 4:
+            elif len(url_parts) == 5:
                 url = url_parts[0]
                 custom_file_name = url_parts[1]
-                youtube_dl_username = url_parts[2]
-                youtube_dl_password = url_parts[3]
+                youtube_dl_proxy = url_parts[2]
+                youtube_dl_username = url_parts[3]
+                youtube_dl_password = url_parts[4]
 
         elif message.entities is not None:
             url = extract_url_from_entity(message.entities, message.text)
@@ -75,11 +78,12 @@ async def extract_link(message, type_o_request):
             if len(url_parts) == 2:
                 url = url_parts[0]
                 custom_file_name = url_parts[1]
-            elif len(url_parts) == 4:
+            elif len(url_parts) == 5:
                 url = url_parts[0]
                 custom_file_name = url_parts[1]
-                youtube_dl_username = url_parts[2]
-                youtube_dl_password = url_parts[3]
+                youtube_dl_proxy = url_parts[2]
+                youtube_dl_username = url_parts[3]
+                youtube_dl_password = url_parts[4]
 
         elif message.caption_entities is not None:
             url = extract_url_from_entity(message.caption_entities, message.caption)
@@ -97,6 +101,8 @@ async def extract_link(message, type_o_request):
         url = url.strip()
     if custom_file_name is not None:
         custom_file_name = custom_file_name.strip()
+    if youtube_dl_proxy is not None:
+        youtube_dl_proxy = youtube_dl_proxy.strip()
     # https://stackoverflow.com/a/761825/4723940
     if youtube_dl_username is not None:
         youtube_dl_username = youtube_dl_username.strip()
@@ -127,4 +133,4 @@ async def extract_link(message, type_o_request):
             # who knows? :\
             pass
 
-    return url, custom_file_name, youtube_dl_username, youtube_dl_password
+    return url, custom_file_name, youtube_dl_proxy, youtube_dl_username, youtube_dl_password
