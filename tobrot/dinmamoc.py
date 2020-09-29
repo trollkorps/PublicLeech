@@ -28,7 +28,7 @@ class Commandi:
     )
     YTDL = get_config(
         "COMMANDI_YTDL",
-        "ytdl"
+        "dl@hochlad_bot"
     )
     STATUS = get_config(
         "COMMANDI_STATUS",
