@@ -124,7 +124,7 @@ async def incoming_youtube_dl_f(client, message):
     i_m_sefg = await message.reply_text("processing", quote=True)
     # LOGGER.info(message)
     # extract link from message
-    dl_url, cf_name, yt_dl_user_name, yt_dl_pass_word = await extract_link(
+    dl_url, cf_name, yt_dl_proxy, yt_dl_user_name, yt_dl_pass_word = await extract_link(
         message.reply_to_message, "YTDL"
     )
     LOGGER.info(dl_url)
