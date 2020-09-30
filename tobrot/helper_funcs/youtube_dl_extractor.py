@@ -108,15 +108,17 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                     approx_file_size = ""
                     if "filesize" in formats:
                         approx_file_size = humanbytes(formats["filesize"])
-                    n_ue_sc = bool(formats.get("acodec") != "none")
+                    has_audio_bool = bool(formats.get("acodec") != "none")
+                    has_video_bool = bool(formats.get("vcodec") != "none")
                     LOGGER.info("1TEST1")
                     LOGGER.info(n_ue_sc)
-                    scneu = "nosound" if not n_ue_sc else "hassound"
+                    a_codec = "noaudio" if not has_audio_bool else "hasaudio"
+                    v_codec = "novideo" if not has_video_bool else "hasvideo"
                     LOGGER.info("2TEST2")
                     LOGGER.info(scneu)
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
-                    cb_string_video = "{}|{}|{}|{}".format(
-                        "video", format_id, format_ext, scneu
+                    cb_string_video = "{}|{}|{}|{}|{}".format(
+                        "video", format_id, format_ext, a_codec, v_codec
                     )
                     ikeyboard = []
                     if "drive.google.com" in url:
@@ -128,14 +130,14 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                                 )
                             ]
                     else:
-                        if format_string is not None and not "audio only" in format_string:
+                        if has_video_bool:
                             ikeyboard = [
                                 InlineKeyboardButton(
                                     dipslay_str_uon,
                                     callback_data=(cb_string_video).encode("UTF-8")
                                 )
                             ]
-                        elif formats.get("vcodec") != "none":
+                        else:
                             # special weird case :\
                             ikeyboard = [
                                 InlineKeyboardButton(
