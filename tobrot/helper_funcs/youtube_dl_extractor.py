@@ -111,7 +111,7 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                     n_ue_sc = bool(formats.get("acodec") != "none")
                     LOGGER.info("1TEST1")
                     LOGGER.info(n_ue_sc)
-                    scneu = "DL" if not n_ue_sc else "XM"
+                    scneu = "nosound" if not n_ue_sc else "hassound"
                     LOGGER.info("2TEST2")
                     LOGGER.info(scneu)
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
@@ -135,7 +135,7 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                                     callback_data=(cb_string_video).encode("UTF-8")
                                 )
                             ]
-                        else:
+                        elif formats.get("vcodec") != "none":
                             # special weird case :\
                             ikeyboard = [
                                 InlineKeyboardButton(
@@ -164,7 +164,7 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                 format_id = current_r_json["format_id"]
                 format_ext = current_r_json["ext"]
                 cb_string_video = "{}|{}|{}|{}".format(
-                    "video", format_id, format_ext, "DL"
+                    "video", format_id, format_ext, "nosound"
                 )
                 inline_keyboard.append([
                     InlineKeyboardButton(
