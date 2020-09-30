@@ -109,7 +109,9 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                     if "filesize" in formats:
                         approx_file_size = humanbytes(formats["filesize"])
                     n_ue_sc = bool(formats.get("acodec") != "none")
+                    LOGGER.info(n_ue_sc + " 1TESTTT1")
                     scneu = "DL" if not n_ue_sc else "XM"
+                    LOGGER.info(scneu + " 2TESTTT2")
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
                     cb_string_video = "{}|{}|{}|{}".format(
                         "video", format_id, format_ext, scneu
@@ -143,9 +145,9 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                             ]
                     inline_keyboard.append(ikeyboard)
                 if duration is not None:
-                    cb_string_64 = "{}|{}|{}".format("audio", "64k", "mp3")
-                    cb_string_128 = "{}|{}|{}".format("audio", "128k", "mp3")
-                    cb_string = "{}|{}|{}".format("audio", "320k", "mp3")
+                    cb_string_64 = "{}|{}|{}|{}".format("audio", "64k", "mp3")
+                    cb_string_128 = "{}|{}|{}|{}".format("audio", "128k", "mp3")
+                    cb_string = "{}|{}|{}|{}".format("audio", "320k", "mp3")
                     inline_keyboard.append([
                         InlineKeyboardButton(
                             "MP3 " + "(" + "64 kbps" + ")", callback_data=cb_string_64.encode("UTF-8")),
