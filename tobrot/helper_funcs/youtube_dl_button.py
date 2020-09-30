@@ -112,18 +112,18 @@ async def youtube_dl_call_back(bot, update):
             # "--external-downloader", "aria2c"
         ]
     else:
-        #for form_ats in response_json["formats"]:
-            #LOGGER.info("////////HAT GEKLAPPT1////////")
-            #form_at_string = form_ats.get("format_note")
-            #if form_at_string is None:
-                #LOGGER.info("////////HAT GEKLAPPT2////////")
-                #form_at_string = form_ats.get("format")
-                #LOGGER.info(form_at_string)
-            #if form_at_string is not None and "video only" in form_at_string and not "youtu" in youtube_dl_url:
-                #LOGGER.info("////////HAT GEKLAPPT3////////")
-                #minus_f_format = youtube_dl_format + "+bestaudio"
-            #break
         # command_to_exec = ["youtube-dl", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
+        for form_ats in response_json["formats"]:
+            LOGGER.info("////////HAT GEKLAPPT1////////")
+            form_at_string = form_ats.get("format_note")
+            if form_at_string is None:
+                LOGGER.info("////////HAT GEKLAPPT2////////")
+                form_at_string = form_ats.get("format")
+                LOGGER.info(form_at_string)
+            if form_at_string is not None and "video only" in form_at_string and not "youtu" in youtube_dl_url:
+                LOGGER.info("////////HAT GEKLAPPT3////////")
+                minus_f_format = youtube_dl_format + "+bestaudio"
+            break
         minus_f_format = youtube_dl_format
         if "youtu" in youtube_dl_url:
             for for_mat in response_json["formats"]:
