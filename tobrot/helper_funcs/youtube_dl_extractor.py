@@ -83,7 +83,9 @@ async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_d
         thumb_image = DEF_THUMB_NAIL_VID_S
         #
         for current_r_json in response_json:
-            # LOGGER.info(current_r_json)
+            LOGGER.info("TTestTT")
+            LOGGER.info(current_r_json)
+            LOGGER.info("TTestTT")
             #
             thumb_image = current_r_json.get("thumbnails", None)
             # LOGGER.info(thumb_image)
