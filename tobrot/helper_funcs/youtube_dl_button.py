@@ -123,7 +123,7 @@ async def youtube_dl_call_back(bot, update):
                     if acodec == "none" or vcodec == "none":
                         minus_f_format = youtube_dl_format + "+bestaudio"
                     break
-        elif so_type = "nosound":
+        elif so_type == "nosound":
             minus_f_format = youtube_dl_format + "+bestaudio"
 
         command_to_exec = [
