@@ -109,9 +109,11 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                     if "filesize" in formats:
                         approx_file_size = humanbytes(formats["filesize"])
                     n_ue_sc = bool(formats.get("acodec") != "none")
-                    LOGGER.info(n_ue_sc + " 1TESTTT1")
+                    LOGGER.info("1TEST1")
+                    LOGGER.info(n_ue_sc)
                     scneu = "DL" if not n_ue_sc else "XM"
-                    LOGGER.info(scneu + " 2TESTTT2")
+                    LOGGER.info("2TEST2")
+                    LOGGER.info(scneu)
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
                     cb_string_video = "{}|{}|{}|{}".format(
                         "video", format_id, format_ext, scneu
