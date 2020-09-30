@@ -113,6 +113,7 @@ async def youtube_dl_call_back(bot, update):
         ]
     else:
         # command_to_exec = ["youtube-dl", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
+        minus_f_format = youtube_dl_format
         for form_ats in response_json["formats"]:
             LOGGER.info("////////HAT GEKLAPPT1////////")
             form_at_string = form_ats.get("format_note")
@@ -120,11 +121,11 @@ async def youtube_dl_call_back(bot, update):
                 LOGGER.info("////////HAT GEKLAPPT2////////")
                 form_at_string = form_ats.get("format")
                 LOGGER.info(form_at_string)
-            if form_at_string is not None and "video only" in form_at_string and not "youtu" in youtube_dl_url:
+            if form_at_string is not None and "video only" in form_at_string and not "youtu" in youtube_dl_url and youtube_dl_format in form_at_string:
                 LOGGER.info("////////HAT GEKLAPPT3////////")
                 minus_f_format = youtube_dl_format + "+bestaudio"
-            break
-        minus_f_format = youtube_dl_format
+                LOGGER.info(minus_f_format)
+                break
         if "youtu" in youtube_dl_url:
             for for_mat in response_json["formats"]:
                 format_id = for_mat.get("format_id")
