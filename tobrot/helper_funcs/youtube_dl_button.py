@@ -114,6 +114,9 @@ async def youtube_dl_call_back(bot, update):
     else:
         # command_to_exec = ["youtube-dl", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
         minus_f_format = youtube_dl_format
+        LOGGER.info("TTestTT2")
+        LOGGER.info(current_r_json)
+        LOGGER.info("TTestTT2")
         for current_r_json in response_json:
             if "formats" in current_r_json:
                 for formats in current_r_json["formats"]:
