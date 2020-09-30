@@ -29,9 +29,6 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
     if "hotstar" in url:
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("IN")
-    if "prosieben" in url:
-        command_to_exec.append("--geo-bypass-country")
-        command_to_exec.append("DE")
     #
     if yt_dl_user_name is not None:
         command_to_exec.append("--username")
@@ -108,7 +105,7 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                     approx_file_size = ""
                     if "filesize" in formats:
                         approx_file_size = humanbytes(formats["filesize"])
-                    n_ue_sc = bool("video only" in format_string)
+                    n_ue_sc = bool(formats.get("acodec") != "none")
                     scneu = "DL" if not n_ue_sc else "XM"
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
                     cb_string_video = "{}|{}|{}|{}".format(
