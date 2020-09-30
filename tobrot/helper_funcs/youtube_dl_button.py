@@ -113,7 +113,9 @@ async def youtube_dl_call_back(bot, update):
         ]
     else:
         minus_f_format = youtube_dl_format
-
+        LOGGER.info("3TEST3")
+        LOGGER.info(acodec)
+        LOGGER.info(vcodec)
         if "youtu" in youtube_dl_url:
             if acodec == "noaudio" or vcodec == "novideo":
                 minus_f_format = youtube_dl_format + "+bestaudio"
