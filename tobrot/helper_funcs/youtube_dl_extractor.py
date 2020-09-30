@@ -18,7 +18,7 @@ from tobrot import (
 )
 
 
-async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_dl_pass_word, user_working_dir):
+async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user_working_dir):
     command_to_exec = [
         "youtube-dl",
         "--no-warnings",
@@ -33,9 +33,6 @@ async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_d
         command_to_exec.append("--geo-bypass-country")
         command_to_exec.append("DE")
     #
-    if yt_dl_geobypass is not None:
-        command_to_exec.append("--geo-bypass-country")
-        command_to_exec.append(yt_dl_geobypass)
     if yt_dl_user_name is not None:
         command_to_exec.append("--username")
         command_to_exec.append(yt_dl_user_name)
@@ -83,7 +80,7 @@ async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_d
         thumb_image = DEF_THUMB_NAIL_VID_S
         #
         for current_r_json in response_json:
-            #LOGGER.info(current_r_json)
+            # LOGGER.info(current_r_json)
             #
             thumb_image = current_r_json.get("thumbnails", None)
             # LOGGER.info(thumb_image)
@@ -111,9 +108,12 @@ async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_d
                     approx_file_size = ""
                     if "filesize" in formats:
                         approx_file_size = humanbytes(formats["filesize"])
+                    n_ue_sc = bool("video only" in format_string)
+                    scneu = "DL" if not n_ue_sc else "XM"
                     dipslay_str_uon = " " + format_string + " (" + format_ext.upper() + ") " + approx_file_size + " "
-                    cb_string_video = "{}|{}|{}".format(
-                        "video", format_id, format_ext)
+                    cb_string_video = "{}|{}|{}|{}".format(
+                        "video", format_id, format_ext, scneu
+                    )
                     ikeyboard = []
                     if "drive.google.com" in url:
                         if format_id == "source":
@@ -159,8 +159,9 @@ async def extract_youtube_dl_formats(url, yt_dl_geobypass, yt_dl_user_name, yt_d
             else:
                 format_id = current_r_json["format_id"]
                 format_ext = current_r_json["ext"]
-                cb_string_video = "{}|{}|{}".format(
-                    "video", format_id, format_ext)
+                cb_string_video = "{}|{}|{}|{}".format(
+                    "video", format_id, format_ext, "DL"
+                )
                 inline_keyboard.append([
                     InlineKeyboardButton(
                         "SVideo",
