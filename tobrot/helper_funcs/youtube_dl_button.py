@@ -116,14 +116,15 @@ async def youtube_dl_call_back(bot, update):
         minus_f_format = youtube_dl_format
         for current_r_json in response_json:
             if "formats" in current_r_json:
-                LOGGER.info("////////HAT GEKLAPPT1////////")
-                format_string = formats.get("format_note")
-            if format_string is None:
-                LOGGER.info("////////HAT GEKLAPPT2////////")
-                format_string = formats.get("format")
-            if format_string is not None and "video only" in format_string and not "youtu" in youtube_dl_url:
-                LOGGER.info("////////HAT GEKLAPPT3////////")
-                minus_f_format = youtube_dl_format + "+bestaudio"
+                for formats in current_r_json["formats"]:
+                    #LOGGER.info("////////HAT GEKLAPPT1////////")
+                    format_string = formats.get("format_note")
+                    if format_string is None:
+                        #LOGGER.info("////////HAT GEKLAPPT2////////")
+                        format_string = formats.get("format")
+                    if format_string is not None and "video only" in format_string and not "youtu" in youtube_dl_url:
+                        #LOGGER.info("////////HAT GEKLAPPT3////////")
+                        minus_f_format = youtube_dl_format + "+bestaudio"
         if "youtu" in youtube_dl_url:
             for for_mat in response_json["formats"]:
                 format_id = for_mat.get("format_id")
