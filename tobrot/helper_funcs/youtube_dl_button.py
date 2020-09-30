@@ -118,9 +118,11 @@ async def youtube_dl_call_back(bot, update):
             if form_at_string is None:
                 LOGGER.info("////////HAT GEKLAPPT2////////")
                 form_at_string = form_ats.get("format")
+                LOGGER.info(form_at_string)
             if form_at_string is not None and "video only" in form_at_string and not "youtu" in youtube_dl_url:
                 LOGGER.info("////////HAT GEKLAPPT3////////")
-                minus_f_format = youtube_dl_format + "+bestaudio"
+                #minus_f_format = youtube_dl_format + "+bestaudio"
+            break
         if "youtu" in youtube_dl_url:
             for for_mat in response_json["formats"]:
                 format_id = for_mat.get("format_id")
