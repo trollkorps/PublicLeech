@@ -117,6 +117,7 @@ async def youtube_dl_call_back(bot, update):
         for form_ats in response_json["formats"]:
             LOGGER.info("////////HAT GEKLAPPT1////////")
             form_at_string = form_ats.get("format_note")
+            LOGGER.info(form_at_string)
             if form_at_string is None:
                 LOGGER.info("////////HAT GEKLAPPT2////////")
                 form_at_string = form_ats.get("format")
