@@ -135,6 +135,16 @@ async def extract_youtube_dl_formats(url, yt_dl_user_name, yt_dl_pass_word, user
                                 InlineKeyboardButton(
                                     dipslay_str_uon,
                                     callback_data=(cb_string_video).encode("UTF-8")
+                        else:
+                            # special weird case :\
+                            ikeyboard = [
+                                InlineKeyboardButton(
+                                    "SVideo [" +
+                                    "] ( " +
+                                    approx_file_size + " )",
+                                    callback_data=(cb_string_video).encode("UTF-8")
+                                )
+                            ]
                     inline_keyboard.append(ikeyboard)
                 if duration is not None:
                     cb_string_64 = "{}|{}|{}|{}|{}".format("audio", "64k", "mp3", "novideo", "hasaudio")
