@@ -115,12 +115,10 @@ async def youtube_dl_call_back(bot, update):
         # command_to_exec = ["youtube-dl", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
         minus_f_format = youtube_dl_format
         for form_at in response_json["formats"]:
-            #LOGGER.info("////////HAT GEKLAPPT1////////")
             format_id = form_at.get("format_id")
             if format_id == youtube_dl_format:
                 a_codec = form_at.get("acodec")
                 if a_codec == "none" and not "youtu" in youtube_dl_url:
-                    LOGGER.info("Hats geschafft")
                     LOGGER.info(a_codec)
                     minus_f_format = youtube_dl_format + "+bestaudio"
                 break
