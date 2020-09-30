@@ -112,12 +112,17 @@ async def youtube_dl_call_back(bot, update):
             # "--external-downloader", "aria2c"
         ]
     else:
+        t_response = stdout.decode().strip()
+        if "\n" in t_response:
+            response_json = []
+            for yu_r in t_response.split("\n"):
+                current_s_json.append(json.loads(yu_r))
+        else:
+            current_s_json.append(json.loads(t_response))
         # command_to_exec = ["youtube-dl", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
         minus_f_format = youtube_dl_format
-        LOGGER.info("TTestTT2")
-        LOGGER.info(current_r_json)
-        LOGGER.info("TTestTT2")
-        for current_r_json in response_json:
+        #LOGGER.info(current_r_json)
+        for current_r_json in current_s_json:
             if "formats" in current_r_json:
                 for formats in current_r_json["formats"]:
                     LOGGER.info("////////HAT GEKLAPPT1////////")
