@@ -154,6 +154,7 @@ async def incoming_youtube_dl_f(client, message):
             yt_dl_pass_word,
             user_working_dir
         )
+        LOGGER.info(reply_markup)
         if thumb_image is not None:
             thumb_image = await proc_ess_image_aqon(
                 thumb_image,
