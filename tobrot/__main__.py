@@ -87,9 +87,9 @@ if __name__ == "__main__" :
         filters=filters.command([Commandi.CANCEL]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(cancel_message_handler)
-
+    LOGGER.info("TTSHOULD_USE_BUTTONSTT")
+    LOGGER.info(SHOULD_USE_BUTTONS)
     if not SHOULD_USE_BUTTONS:
-        LOGGER.info(SHOULD_USE_BUTTONS)
         LOGGER.info("using COMMANDi mode")
         # LEECH command
         incoming_message_handler = MessageHandler(
