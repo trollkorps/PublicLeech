@@ -9,6 +9,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 LOGGER = logging.getLogger(__name__)
+LOGGER.info(__name__)
 
 from pyrogram.types import CallbackQuery
 from tobrot.helper_funcs.youtube_dl_button import youtube_dl_call_back
