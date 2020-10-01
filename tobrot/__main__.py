@@ -121,7 +121,7 @@ if __name__ == "__main__" :
     )
     app.add_handler(call_back_button_handler)
 
-    if DIS_ABLE_ST_GFC_COMMAND_I == "false":
+    if DIS_ABLE_ST_GFC_COMMAND_I:
         exec_message_handler = MessageHandler(
             exec_message_f,
             filters=filters.command([Commandi.EXEC]) & filters.chat(chats=AUTH_CHANNEL)
