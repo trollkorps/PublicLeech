@@ -87,9 +87,8 @@ if __name__ == "__main__" :
         filters=filters.command([Commandi.CANCEL]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(cancel_message_handler)
-    LOGGER.info("TTSHOULD_USE_BUTTONSTT")
-    LOGGER.info(SHOULD_USE_BUTTONS)
-    if not SHOULD_USE_BUTTONS:
+
+    if SHOULD_USE_BUTTONS == "false":
         LOGGER.info("using COMMANDi mode")
         # LEECH command
         incoming_message_handler = MessageHandler(
@@ -122,7 +121,7 @@ if __name__ == "__main__" :
     )
     app.add_handler(call_back_button_handler)
 
-    if DIS_ABLE_ST_GFC_COMMAND_I:
+    if DIS_ABLE_ST_GFC_COMMAND_I == "false":
         exec_message_handler = MessageHandler(
             exec_message_f,
             filters=filters.command([Commandi.EXEC]) & filters.chat(chats=AUTH_CHANNEL)
