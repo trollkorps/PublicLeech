@@ -32,6 +32,9 @@ async def get_markup(message: Message):
         "youtube-dl",
         callback_data=("ytdl").encode("UTF-8")
     ))
+    inline_keyboard.append(ikeyboard)
+    ikeyboard = []
+
     reply_markup = InlineKeyboardMarkup(inline_keyboard)
     inline_keyboard = []
 
