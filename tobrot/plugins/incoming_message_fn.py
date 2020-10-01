@@ -52,18 +52,19 @@ async def incoming_purge_message_f(client, message):
 
 
 async def incoming_message_f(client, message):
-    """/leech command"""
     i_m_sefg = await message.reply_text("checking ", quote=True)
     LOGGER.info("TTget_markupTT")
     t_, rm_ = await get_markup(message)
+    LOGGER.info(t_)
+    LOGGER.info(rm_)
     await i_m_sefg.edit_text(
         text=t_,
-        reply_markup=rm_,
-        disable_web_page_preview=True
+        reply_markup=rm_
     )
 
 
 async def leech_commandi_f(client, message):
+    """/leech command"""
     m_ = await message.reply_text(
         "checking",
         quote=True
