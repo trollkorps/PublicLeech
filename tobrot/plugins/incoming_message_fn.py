@@ -32,7 +32,10 @@ from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from tobrot.helper_funcs.admin_check import AdminCheck
 from tobrot.helper_funcs.create_r_o_m import get_markup
-from tobrot.helper_funcs.icntaosrtsba import leech_btn_k
+from tobrot.helper_funcs.icntaosrtsba import (
+    leech_btn_k,
+    ytdl_btn_k
+)
 from tobrot.helper_funcs.fix_tcerrocni_images import proc_ess_image_aqon
 
         
@@ -51,7 +54,7 @@ async def incoming_purge_message_f(client, message):
 async def incoming_message_f(client, message):
     """/leech command"""
     i_m_sefg = await message.reply_text("checking ", quote=True)
-    LOGGER.info("TTget_markupTT"
+    LOGGER.info("TTget_markupTT")
     t_, rm_ = await get_markup(message)
     await i_m_sefg.edit_text(
         text=t_,
