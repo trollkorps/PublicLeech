@@ -14,7 +14,8 @@ import configparser
 
 from pyrogram.types import (
     InlineKeyboardButton,
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
+    Message
 )
 from tobrot import (
     R_CLONE_CONF_URI
