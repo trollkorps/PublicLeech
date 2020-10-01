@@ -20,11 +20,15 @@ from tobrot.helper_funcs.icntaosrtsba import (
 
 async def button(bot, update: CallbackQuery):
     LOGGER.info(update)
+    LOGGER.info("TTcb_dataTT")
+    LOGGER.info(cb_data)
     if update.from_user.id != update.message.reply_to_message.from_user.id:
         return
 
     await update.answer()
     cb_data = update.data
+    LOGGER.info("TTcb_datanewTT")
+    LOGGER.info(cb_data)
     
     if cb_data.startswith("leech"):
         LOGGER.info("TTleechTT")
@@ -35,4 +39,5 @@ async def button(bot, update: CallbackQuery):
         await ytdl_btn_k(update.message)
 
     elif "|" in cb_data:
+        LOGGER.info("TTpipeTT")
         await youtube_dl_call_back(bot, update)
