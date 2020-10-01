@@ -55,11 +55,11 @@ async def incoming_message_f(client, message):
     i_m_sefg = await message.reply_text("checking ", quote=True)
     LOGGER.info("TTget_markupTT")
     t_, rm_ = await get_markup(message)
-    LOGGER.info(t_)
     LOGGER.info(rm_)
     await i_m_sefg.edit_text(
         text=t_,
-        reply_markup=rm_
+        reply_markup=rm_,
+        disable_web_page_preview=True
     )
 
 
