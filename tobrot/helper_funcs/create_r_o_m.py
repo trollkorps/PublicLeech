@@ -14,8 +14,7 @@ import configparser
 
 from pyrogram.types import (
     InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message
+    InlineKeyboardMarkup
 )
 from tobrot import (
     R_CLONE_CONF_URI
@@ -25,7 +24,7 @@ from tobrot.helper_funcs.r_clone import (
 )
 
 
-async def get_markup(message: Message):
+async def get_markup():
     inline_keyboard = []
     ikeyboard = []
     ikeyboard.append(InlineKeyboardButton(
