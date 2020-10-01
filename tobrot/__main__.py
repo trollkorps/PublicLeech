@@ -116,7 +116,9 @@ if __name__ == "__main__" :
     # button is LEGACY command to handle
     # the OLD YTDL buttons,
     # and also the new SUB buttons
-    call_back_button_handler = CallbackQueryHandler()
+    call_back_button_handler = CallbackQueryHandler(
+        button
+    )
     app.add_handler(call_back_button_handler)
 
     if DIS_ABLE_ST_GFC_COMMAND_I:
