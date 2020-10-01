@@ -20,8 +20,6 @@ from tobrot.helper_funcs.icntaosrtsba import (
 
 async def button(bot, update: CallbackQuery):
     LOGGER.info(update)
-    LOGGER.info("TTcb_dataTT")
-    LOGGER.info(cb_data)
     if update.from_user.id != update.message.reply_to_message.from_user.id:
         return
 
