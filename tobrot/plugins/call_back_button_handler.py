@@ -9,7 +9,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 LOGGER = logging.getLogger(__name__)
-LOGGER.info(__name__)
 
 from pyrogram.types import CallbackQuery
 from tobrot.helper_funcs.youtube_dl_button import youtube_dl_call_back
@@ -21,6 +20,7 @@ from tobrot.helper_funcs.icntaosrtsba import (
 
 async def button(bot, update: CallbackQuery):
     LOGGER.info(update)
+    LOGGER.info("SOMETHING IS HAPPENING")
     if update.from_user.id != update.message.reply_to_message.from_user.id:
         return
     LOGGER.info("TTcb_datanewTT")
