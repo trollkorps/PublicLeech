@@ -22,20 +22,15 @@ async def button(bot, update: CallbackQuery):
     LOGGER.info(update)
     if update.from_user.id != update.message.reply_to_message.from_user.id:
         return
-
+    LOGGER.info("TTcb_datanewTT")
     await update.answer()
     cb_data = update.data
-    LOGGER.info("TTcb_datanewTT")
-    LOGGER.info(cb_data)
     
     if cb_data.startswith("leech"):
-        LOGGER.info("TTleechTT")
         await leech_btn_k(update.message, cb_data)
 
     elif cb_data.startswith("ytdl"):
-        LOGGER.info("TTytdlTT")
         await ytdl_btn_k(update.message)
 
     elif "|" in cb_data:
-        LOGGER.info("TTpipeTT")
         await youtube_dl_call_back(bot, update)
