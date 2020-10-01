@@ -32,10 +32,7 @@ from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from tobrot.helper_funcs.admin_check import AdminCheck
 from tobrot.helper_funcs.create_r_o_m import get_markup
-from tobrot.helper_funcs.icntaosrtsba import (
-    leech_btn_k,
-    ytdl_btn_k
-)
+
 from tobrot.helper_funcs.fix_tcerrocni_images import proc_ess_image_aqon
 
         
@@ -154,7 +151,6 @@ async def incoming_youtube_dl_f(client, message):
             yt_dl_pass_word,
             user_working_dir
         )
-        LOGGER.info(reply_markup)
         if thumb_image is not None:
             thumb_image = await proc_ess_image_aqon(
                 thumb_image,
