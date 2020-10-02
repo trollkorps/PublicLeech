@@ -1,3 +1,5 @@
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)]
+
 # Torrent / YouTube Leecher 🔥🤖
 
 A Torrent, youtube-dl Leecher, and Uploader!
