@@ -1,13 +1,9 @@
 {
-  "name": "Telegram Torrent Leecher",
+  "name": "Telegram Leecher",
   "description": "A Telegram Torrent (and youtube-dl) Leecher based on Pyrogram. Powered by @ThankTelegram!",
   "keywords": [
     "telegram",
     "best",
-    "indian",
-    "pyrogram",
-    "torrent",
-    "3",
     "plugin",
     "modular",
     "productivity",
